@@ -621,7 +621,7 @@
         const alertBox = document.getElementById('form-alert');
         const steps = Array.from(form.querySelectorAll('.insc-step'));
         const btnPrev = document.getElementById('btn-prev');
-        const btnNext = document.getElementById('btn-next');
+        const btnNext = document.getElementById('btn-next'); // puede no existir
         const btnSubmit = document.getElementById('btn-submit');
         const stepProgress = document.getElementById('step-progress');
         const stepCurrent = document.getElementById('step-current');
@@ -663,8 +663,8 @@
             opt.classList.add('selected');
             applySelectedStyles(opt);
             if (hidden) hidden.value = opt.dataset.value || '';
-            // Habilitar siguiente
-            btnNext.disabled = false;
+            // Habilitar siguiente (si existe)
+            if (btnNext) btnNext.disabled = false;
 
             // Auto-avance: si el paso actual es de selección (tiene hidden) y NO es el último
             const isSelectionStep = !!hidden;
@@ -709,7 +709,7 @@
           btnPrev.disabled = currentIndex === 0;
 
           const onLast = currentIndex === total - 1;
-          btnNext.classList.toggle('hidden', onLast);
+          if (btnNext) btnNext.classList.toggle('hidden', onLast);
           btnSubmit.classList.toggle('hidden', !onLast);
 
           // Estado del botón Next según selección/entrada
@@ -722,7 +722,7 @@
             const val = (waInput.value || '').trim();
             valid = /^\+?[0-9]{8,15}$/.test(val);
           }
-          btnNext.disabled = !valid;
+          if (btnNext) btnNext.disabled = !valid;
         }
 
         btnPrev.addEventListener('click', () => {
@@ -732,7 +732,7 @@
           }
         });
 
-        btnNext.addEventListener('click', () => {
+        if (btnNext) btnNext.addEventListener('click', () => {
           const stepEl = steps[currentIndex];
           const hidden = stepEl.querySelector('input[type="hidden"]');
           const waInput = stepEl.querySelector('input[name="whatsapp"]');
