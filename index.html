@@ -568,7 +568,7 @@
           <!-- Navegación -->
           <div class="mt-2 flex items-center gap-3">
             <button type="button" id="btn-prev" class="px-4 py-2 rounded border border-white/30 text-white/90 hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed">Anterior</button>
-            <button type="button" id="btn-next" class="px-4 py-2 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed">Siguiente</button>
+            <button type="button" id="btn-next" class="hidden px-4 py-2 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed">Siguiente</button>
             <button type="submit" id="btn-submit" class="hidden px-5 py-2.5 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90">Enviar mi solicitud</button>
           </div>
         </form>
@@ -592,9 +592,20 @@
       </div>
     </footer>
 
-    <!-- JS integrado -->
-  <script src="api/client.js"></script>
+  <!-- JS integrado -->
+  <script>window.GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwsG-8Mu6xvOsonX7sp248g2qO2MOSpIqSrc1XaTN3amcivGluMwmsWXigJPeVxRMHKLA/exec';</script>
     <script>
+      async function sendLead(endpoint, row) {
+        try {
+          await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            // no-cors para evitar bloquear si el Apps Script no devuelve CORS
+            mode: 'no-cors',
+            body: JSON.stringify(row)
+          });
+        } catch (_) { /* noop */ }
+      }
       // Año dinámico en el footer
       document.getElementById('year').textContent = new Date().getFullYear();
       // Reemplazar iconos Feather
@@ -658,11 +669,15 @@
             const isSelectionStep = !!hidden;
             const isLast = currentIndex === steps.length - 1;
             if (isSelectionStep && !isLast) {
-              // Feedback visual en el botón siguiente
-              btnNext.classList.add('ring-2','ring-lc-yellow/70','shadow-lg','scale-[1.02]','transition','duration-300');
+              // Feedback visual: barra de progreso "amarilla" y botón Anterior en amarillo durante la transición
+              const prevBgClasses = ['bg-lc-yellow','text-slate-900'];
+              const revertPrev = () => prevBgClasses.forEach(c=>btnPrev.classList.remove(c));
+              btnPrev.classList.add('bg-lc-yellow','text-slate-900');
+              stepProgress.classList.add('bg-lc-yellow');
               setTimeout(() => {
-                btnNext.classList.remove('ring-2','ring-lc-yellow/70','shadow-lg','scale-[1.02]');
                 goTo(currentIndex + 1);
+                revertPrev();
+                stepProgress.classList.remove('bg-lc-yellow');
               }, 800);
             }
           });
@@ -748,6 +763,13 @@
             return;
           }
           if (currentIndex < steps.length - 1) {
+            // feedback al usar el botón atrás como CTA visual temporal
+            btnPrev.classList.add('bg-lc-yellow','text-slate-900');
+            stepProgress.classList.add('bg-lc-yellow');
+            setTimeout(()=>{
+              btnPrev.classList.remove('bg-lc-yellow','text-slate-900');
+              stepProgress.classList.remove('bg-lc-yellow');
+            }, 800);
             goTo(currentIndex + 1);
             alertBox.classList.add('hidden');
           }
@@ -803,9 +825,9 @@
 
           try {
             const endpoint = window.GAS_ENDPOINT || '';
-            if (endpoint && window.CGApi && typeof window.CGApi.sendLead === 'function') {
+            if (endpoint) {
               await Promise.race([
-                window.CGApi.sendLead(endpoint, row),
+                sendLead(endpoint, row),
                 new Promise((resolve) => setTimeout(resolve, 2000))
               ]);
             }
