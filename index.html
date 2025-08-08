@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La Casita Virtual — Curso Integral en TCA</title>
+    <meta name="description" content="Aprendé un abordaje clínico, educativo y familiar integral para adolescentes y jóvenes con TCA, de la mano de referentes en el área. 100% online, asincrónico, con certificado oficial y acceso inmediato." />
+
+    <!-- Fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lc: {
+                tealDark: '#005f73',
+                teal: '#0a9396',
+                yellow: '#ffb703',
+                gray: '#f5f5f5',
+                white: '#ffffff'
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif']
+            },
+            boxShadow: {
+              soft: '0 10px 25px -10px rgb(0 0 0 / 0.15)'
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      /* Ajustes mínimos adicionales (no reemplazan Tailwind) */
+      html { scroll-behavior: smooth; }
+    </style>
+  </head>
+  <body class="font-sans text-slate-800 bg-white">
+    <!-- Header simple -->
+    <header class="bg-lc-tealDark text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded bg-white/15 flex items-center justify-center font-bold">LC</div>
+          <span class="font-semibold tracking-wide">La Casita Virtual</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-white/90 text-sm">
+          <a href="#problema" class="hover:text-white">Por qué formarte</a>
+          <a href="#resumen" class="hover:text-white">El curso</a>
+          <a href="#contenido" class="hover:text-white">Contenido</a>
+          <a href="#equipo" class="hover:text-white">Equipo</a>
+          <a href="#faq" class="hover:text-white">FAQ</a>
+        </nav>
+        <a href="#inscripcion" class="inline-block bg-lc-yellow text-slate-900 font-semibold px-4 py-2 rounded hover:opacity-95 shadow-soft">Quiero inscribirme</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative bg-gradient-to-b from-lc-tealDark to-lc-teal text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">Formación integral en Trastornos de la Conducta Alimentaria (TCA)</h1>
+          <p class="mt-5 text-lg sm:text-xl text-white/90">Aprendé un abordaje clínico, educativo y familiar integral para adolescentes y jóvenes con Trastornos de la Conducta Alimentaria (TCA), de la mano de referentes en el área.</p>
+
+          <ul class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+            <li class="flex items-center gap-2 bg-white/10 backdrop-blur rounded px-3 py-2"><span>✅</span><span>100% online y asincrónico</span></li>
+            <li class="flex items-center gap-2 bg-white/10 backdrop-blur rounded px-3 py-2"><span>✅</span><span>Certificado oficial</span></li>
+            <li class="flex items-center gap-2 bg-white/10 backdrop-blur rounded px-3 py-2"><span>✅</span><span>Acceso inmediato</span></li>
+          </ul>
+
+          <div class="mt-10 flex items-center gap-4">
+            <a href="#inscripcion" class="bg-lc-yellow text-slate-900 font-semibold px-6 py-3 rounded-md shadow-soft hover:opacity-90">Quiero inscribirme ahora</a>
+            <a href="#contenido" class="text-white/90 hover:text-white">Ver contenido</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problema / Conexión -->
+    <section id="problema" class="bg-lc-gray">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">¿Por qué formarte en TCA ahora?</h2>
+        <div class="mt-6 space-y-4 text-slate-700">
+          <p>¿Sabías que los Trastornos de la Conducta Alimentaria son una de las problemáticas de salud mental más complejas y en aumento en adolescentes y jóvenes?</p>
+          <p>Detectarlos a tiempo y tratarlos correctamente puede marcar la diferencia entre una recuperación posible o años de sufrimiento. El problema es que muchos profesionales, educadores y familiares no cuentan con las herramientas adecuadas para intervenir de forma efectiva y respetuosa.</p>
+          <p>En este curso vas a aprender cómo hacerlo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumen del curso -->
+    <section id="resumen" class="bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">El curso en resumen</h2>
+        <p class="mt-3 text-slate-700">En solo 19 clases vas a aprender a:</p>
+        <ul class="mt-6 grid gap-3">
+          <li class="flex items-start gap-3"><span class="mt-1">•</span><span>Diagnosticar y comprender los diferentes tipos de TCA según la última evidencia científica.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-1">•</span><span>Aplicar un abordaje multidisciplinario que integra psicología, psiquiatría, nutrición y medicina.</span></li>
+          <li class="flex items-start gap-3"><span class="mt-1">•</span><span>Acompañar a familias y educadores en el proceso de recuperación.</span></li>
+        </ul>
+
+        <div class="mt-8">
+          <h3 class="text-xl font-semibold text-slate-900">Este curso es para vos si sos:</h3>
+          <ul class="mt-4 grid sm:grid-cols-2 gap-3">
+            <li class="bg-lc-gray rounded px-4 py-3">Profesional de la salud mental.</li>
+            <li class="bg-lc-gray rounded px-4 py-3">Educador/a en contacto con adolescentes.</li>
+            <li class="bg-lc-gray rounded px-4 py-3">Familiar de una persona con TCA.</li>
+            <li class="bg-lc-gray rounded px-4 py-3">Estudiante avanzado/a de carreras afines.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diferenciales -->
+    <section class="bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">¿Por qué este curso es diferente?</h2>
+        <p class="mt-4 text-slate-700">Hay muchos cursos sobre TCA… pero ninguno con el respaldo de La Casita Virtual. Llevamos más de 30 años trabajando en la clínica, formando equipos y acompañando familias en uno de los desafíos más delicados de la salud mental.</p>
+        <div class="mt-6 grid sm:grid-cols-2 gap-4">
+          <div class="rounded border border-slate-200 p-5">
+            <p class="font-semibold text-slate-900">Equipo de más de 40 especialistas en TCA.</p>
+          </div>
+          <div class="rounded border border-slate-200 p-5">
+            <p class="font-semibold text-slate-900">Metodología que combina teoría y experiencia clínica real.</p>
+          </div>
+          <div class="rounded border border-slate-200 p-5">
+            <p class="font-semibold text-slate-900">Enfoque integral paciente–familia–entorno.</p>
+          </div>
+          <div class="rounded border border-slate-200 p-5">
+            <p class="font-semibold text-slate-900">Recursos y bibliografía exclusiva para alumnos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenido del curso -->
+    <section id="contenido" class="bg-lc-gray">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">Contenido del curso</h2>
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-lg shadow-soft p-6">
+            <h3 class="text-lg font-semibold text-lc-tealDark">Módulo 1 – Comprensión y diagnóstico de los TCA</h3>
+            <p class="mt-3 text-slate-700">Anorexia Nerviosa, Bulimia Nerviosa, Trastorno por Atracones, OSFED y ARFID. Actualización DSM V y nuevas categorías.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-soft p-6">
+            <h3 class="text-lg font-semibold text-lc-tealDark">Módulo 2 – Abordaje interdisciplinario paso a paso</h3>
+            <p class="mt-3 text-slate-700">Psicología, psiquiatría, nutrición y medicina. Algoritmo de tratamiento y diseño de planes personalizados.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-soft p-6">
+            <h3 class="text-lg font-semibold text-lc-tealDark">Módulo 3 – Estrategias con familias y educadores</h3>
+            <p class="mt-3 text-slate-700">Comunicación efectiva y acompañamiento sin daño. Prevención de recaídas.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-soft p-6">
+            <h3 class="text-lg font-semibold text-lc-tealDark">Módulo 4 – Casos prácticos y resolución de problemas</h3>
+            <p class="mt-3 text-slate-700">Modelos de entrevistas, seguimiento y cierre. Herramientas para contextos escolares y familiares. + Bibliografía y recursos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestra historia -->
+    <section class="bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">Nuestra historia</h2>
+        <p class="mt-4 text-slate-700">Desde 1985, en La Casita Virtual trabajamos con un propósito claro: prevenir, diagnosticar y tratar los TCA con un enfoque humano y basado en evidencia. Lo que empezó como un pequeño equipo en Buenos Aires, hoy es un grupo multidisciplinario de más de 40 profesionales que abarca psicología, psiquiatría, nutrición, medicina y terapias complementarias. A lo largo de los años hemos capacitado a cientos de profesionales y ayudado a familias de todo el país y el exterior.</p>
+      </div>
+    </section>
+
+    <!-- Equipo docente -->
+    <section id="equipo" class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">Equipo docente</h2>
+        <p class="mt-4 text-slate-700">Aprendé con especialistas reconocidos:</p>
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="rounded border border-slate-200 p-4"><p class="font-semibold">Lic. Rosina Crispo</p><p class="text-sm text-slate-600">Psicóloga, Directora de La Casita.</p></div>
+          <div class="rounded border border-slate-200 p-4"><p class="font-semibold">Lic. Diana Guelar</p><p class="text-sm text-slate-600">Psicóloga, Directora de La Casita.</p></div>
+          <div class="rounded border border-slate-200 p-4"><p class="font-semibold">Lic. Paula Hernandez</p><p class="text-sm text-slate-600">Psicóloga, Coordinadora General.</p></div>
+          <div class="rounded border border-slate-200 p-4"><p class="font-semibold">Lic. Julieta Ramos</p><p class="text-sm text-slate-600">Psicóloga, Coordinadora Área Psicología.</p></div>
+          <div class="rounded border border-slate-200 p-4"><p class="font-semibold">Dra. Andrea Sverdlick</p><p class="text-sm text-slate-600">Médica Clínica, especialista en TCA y Diabetes.</p></div>
+          <div class="rounded border border-slate-200 p-4"><p class="font-semibold">Lic. Josefina García</p><p class="text-sm text-slate-600">Nutricionista, Coordinadora de Área Nutrición.</p></div>
+        </div>
+        <p class="mt-4 text-slate-600">Y un equipo completo de más de 40 profesionales especializados.</p>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="bg-lc-gray">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">Testimonios</h2>
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <figure class="bg-white rounded-lg shadow-soft p-6">
+            <blockquote class="text-slate-700">“La formación me dio herramientas concretas que puedo aplicar en mi trabajo diario. Lo que más valoro es que aprendí de profesionales que realmente trabajan en el tema todos los días.”</blockquote>
+            <figcaption class="mt-4 text-sm text-slate-600">— Carla, psicóloga</figcaption>
+          </figure>
+          <figure class="bg-white rounded-lg shadow-soft p-6">
+            <blockquote class="text-slate-700">“Como docente, entendí señales de alerta que antes pasaban desapercibidas. Hoy me siento más segura para actuar y acompañar.”</blockquote>
+            <figcaption class="mt-4 text-sm text-slate-600">— Mariana, profesora</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Garantía -->
+    <section class="bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="rounded-lg border border-yellow-200 bg-amber-50 p-6">
+          <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">Garantía y confianza</h2>
+          <p class="mt-3 text-slate-700">Estamos tan seguros de que este curso va a darte herramientas valiosas, que te ofrecemos una garantía de 7 días: si no cumple tus expectativas, te devolvemos el 100% de tu dinero.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preguntas frecuentes -->
+    <section id="faq" class="bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <h2 class="text-2xl sm:text-3xl font-bold text-lc-tealDark">Preguntas frecuentes</h2>
+        <div class="mt-6 space-y-4">
+          <details class="rounded border border-slate-200 p-4 group">
+            <summary class="font-semibold cursor-pointer text-slate-900">¿Necesito conocimientos previos?</summary>
+            <p class="mt-2 text-slate-700">No, el curso está diseñado para profesionales y familiares sin formación específica en TCA.</p>
+          </details>
+          <details class="rounded border border-slate-200 p-4 group">
+            <summary class="font-semibold cursor-pointer text-slate-900">¿Cuánto tiempo tengo para hacerlo?</summary>
+            <p class="mt-2 text-slate-700">El acceso es ilimitado, podés avanzar a tu ritmo.</p>
+          </details>
+          <details class="rounded border border-slate-200 p-4 group">
+            <summary class="font-semibold cursor-pointer text-slate-900">¿Recibo certificado?</summary>
+            <p class="mt-2 text-slate-700">Sí, con el sello de La Casita Virtual.</p>
+          </details>
+          <details class="rounded border border-slate-200 p-4 group">
+            <summary class="font-semibold cursor-pointer text-slate-900">¿Puedo pagar en cuotas?</summary>
+            <p class="mt-2 text-slate-700">Sí, hasta 6 cuotas con MercadoPago.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de inscripción -->
+    <section id="inscripcion" class="bg-lc-tealDark text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-2xl sm:text-3xl font-bold">Formulario de inscripción</h2>
+        <p class="mt-2 text-white/90">Queremos conocerte mejor para personalizar tu experiencia de formación. Completá este breve formulario y te contactaremos con la información más relevante para tu perfil.</p>
+
+        <form id="form-inscripcion" class="mt-8 grid gap-6 bg-white/10 p-6 rounded-lg">
+          <!-- Perfil principal -->
+          <fieldset>
+            <legend class="font-semibold">¿Cuál es tu perfil principal?</legend>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="salud" class="accent-lc-yellow" /> Profesional de la salud mental</label>
+              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="educacion" class="accent-lc-yellow" /> Profesional del ámbito educativo</label>
+              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="familiar" class="accent-lc-yellow" /> Familiar de adolescente/joven con TCA</label>
+              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="estudiante" class="accent-lc-yellow" /> Estudiante avanzado/a</label>
+              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="otro" class="accent-lc-yellow" /> Otro</label>
+            </div>
+          </fieldset>
+
+          <!-- Objetivo principal -->
+          <fieldset>
+            <legend class="font-semibold">¿Cuál es tu principal objetivo al tomar este curso?</legend>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="actualizar" class="accent-lc-yellow" /> Actualizarme en el abordaje clínico de los TCA</label>
+              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="acompanar" class="accent-lc-yellow" /> Saber cómo acompañar a un familiar</label>
+              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="detectar" class="accent-lc-yellow" /> Detectar señales de alerta en el ámbito educativo</label>
+              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="conocer" class="accent-lc-yellow" /> Conocer más sobre los TCA de forma general</label>
+            </div>
+          </fieldset>
+
+          <!-- Plazo -->
+          <fieldset>
+            <legend class="font-semibold">¿En qué plazo pensás comenzar tu formación?</legend>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="ahora" class="accent-lc-yellow" /> Inmediatamente</label>
+              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="1mes" class="accent-lc-yellow" /> Dentro de 1 mes</label>
+              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="3meses" class="accent-lc-yellow" /> Dentro de 3 meses o más</label>
+              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="explorando" class="accent-lc-yellow" /> Solo estoy explorando opciones</label>
+            </div>
+          </fieldset>
+
+          <!-- Certificación -->
+          <fieldset>
+            <legend class="font-semibold">¿Qué importancia tiene para vos obtener certificación oficial?</legend>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="cert" value="muy" class="accent-lc-yellow" /> Muy importante</label>
+              <label class="flex items-center gap-2"><input type="radio" name="cert" value="algo" class="accent-lc-yellow" /> Algo importante</label>
+              <label class="flex items-center gap-2"><input type="radio" name="cert" value="no" class="accent-lc-yellow" /> No es importante</label>
+            </div>
+          </fieldset>
+
+          <!-- Pago preferido -->
+          <fieldset>
+            <legend class="font-semibold">¿Cómo preferís realizar el pago?</legend>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="pago" value="transferencia" class="accent-lc-yellow" /> Transferencia única</label>
+              <label class="flex items-center gap-2"><input type="radio" name="pago" value="cuotas" class="accent-lc-yellow" /> En cuotas</label>
+              <label class="flex items-center gap-2"><input type="radio" name="pago" value="no-seguro" class="accent-lc-yellow" /> No estoy seguro/a</label>
+            </div>
+          </fieldset>
+
+          <div id="form-alert" class="hidden rounded-md border border-emerald-300 bg-emerald-50 text-emerald-900 px-4 py-3 text-sm"></div>
+
+          <button type="submit" class="self-start bg-lc-yellow text-slate-900 font-semibold px-6 py-3 rounded-md shadow-soft hover:opacity-90">Enviar mi solicitud</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Cierre con CTA -->
+    <section class="bg-gradient-to-b from-white to-lc-gray">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-lc-tealDark">Formate para marcar la diferencia en la vida de adolescentes y jóvenes con TCA</h2>
+        <p class="mt-4 text-slate-700 max-w-3xl mx-auto">No dejes que la falta de herramientas sea una barrera para ayudar. Sumate hoy y empezá a formarte con un equipo que lleva tres décadas haciéndolo posible.</p>
+        <a href="#inscripcion" class="inline-block mt-8 bg-lc-teal text-white font-semibold px-8 py-3 rounded-md shadow-soft hover:opacity-95">Comenzar ahora</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lc-tealDark text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-sm text-white/80">© <span id="year"></span> La Casita Virtual. Todos los derechos reservados.</p>
+        <div class="text-sm text-white/80">Paleta: #005f73 · #0a9396 · #ffb703 · #f5f5f5</div>
+      </div>
+    </footer>
+
+    <!-- JS integrado -->
+    <script>
+      // Año dinámico en el footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Manejo de envío del formulario
+      const form = document.getElementById('form-inscripcion');
+      const alertBox = document.getElementById('form-alert');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        const payload = Object.fromEntries(data.entries());
+
+        // Validaciones mínimas (perfil y objetivo)
+        if (!payload.perfil || !payload.objetivo) {
+          alertBox.textContent = 'Por favor, seleccioná al menos tu perfil y tu objetivo principal.';
+          alertBox.classList.remove('hidden');
+          alertBox.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
+          alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
+          return;
+        }
+
+        // Simular envío (integración futura con backend/API)
+        console.log('[Inscripción] Datos enviados:', payload);
+        alertBox.textContent = '¡Gracias! Recibimos tu solicitud. Te contactaremos a la brevedad.';
+        alertBox.classList.remove('hidden');
+        alertBox.classList.remove('border-red-300', 'bg-red-50', 'text-red-900');
+        alertBox.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
+
+        form.reset();
+      });
+    </script>
+  </body>
+  
+</html>
+
+
