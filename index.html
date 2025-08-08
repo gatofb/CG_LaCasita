@@ -640,18 +640,20 @@
         }
         function applySelectedStyles(optionEl) {
           optionEl.classList.remove('bg-white/10', 'text-white/90');
-          optionEl.classList.add('bg-lc-yellow', 'text-slate-900', 'font-semibold', 'shadow-soft');
+          optionEl.classList.add('bg-lc-yellow', 'text-slate-900', 'font-semibold', 'shadow-soft', 'transition-none');
         }
         function removeSelectedStyles(optionEl) {
           optionEl.classList.add('bg-white/10', 'text-white/90');
-          optionEl.classList.remove('bg-lc-yellow', 'text-slate-900', 'font-semibold', 'shadow-soft');
+          optionEl.classList.remove('bg-lc-yellow', 'text-slate-900', 'font-semibold', 'shadow-soft', 'transition-none');
         }
 
         // Inicializar opciones con estilos y listeners
         const allOptions = Array.from(form.querySelectorAll('.insc-option'));
+        let isAdvancing = false;
         allOptions.forEach(opt => {
           applyBaseOptionStyles(opt);
           opt.addEventListener('click', () => {
+            if (isAdvancing) return;
             const stepEl = opt.closest('.insc-step');
             if (!stepEl) return;
             const hidden = stepEl.querySelector('input[type="hidden"]');
@@ -668,9 +670,10 @@
             const isSelectionStep = !!hidden;
             const isLast = currentIndex === steps.length - 1;
             if (isSelectionStep && !isLast) {
-              // La opción ya queda amarilla (applySelectedStyles). Esperamos 800ms y avanzamos.
+              isAdvancing = true;
               setTimeout(() => {
                 goTo(currentIndex + 1);
+                setTimeout(() => { isAdvancing = false; }, 350);
               }, 800);
             }
           });
@@ -682,20 +685,11 @@
           const toEl = steps[nextIndex];
           if (fromEl === toEl) return;
 
-          // Transición suave entre pasos
-          fromEl.classList.add('transition','duration-300','ease-out');
-          fromEl.classList.add('opacity-0','translate-y-1');
-          setTimeout(() => {
-            fromEl.classList.add('hidden');
-            fromEl.classList.remove('opacity-0','translate-y-1');
-            toEl.classList.remove('hidden');
-            toEl.classList.add('transition','duration-300','ease-out','opacity-0','-translate-y-1');
-            requestAnimationFrame(() => {
-              toEl.classList.remove('opacity-0','-translate-y-1');
-            });
-            currentIndex = nextIndex;
-            updateUI();
-          }, 280);
+          // Transición suave entre pasos (más directa)
+          fromEl.classList.add('hidden');
+          toEl.classList.remove('hidden');
+          currentIndex = nextIndex;
+          updateUI();
         }
 
         function updateUI() {
