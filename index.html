@@ -324,63 +324,83 @@
         <p class="mt-2 text-white/90">Queremos conocerte mejor para personalizar tu experiencia de formación. Completá este breve formulario y te contactaremos con la información más relevante para tu perfil.</p>
 
         <form id="form-inscripcion" class="mt-8 grid gap-6 bg-white/10 p-6 rounded-lg">
-          <!-- Perfil principal -->
-          <fieldset>
-            <legend class="font-semibold">¿Cuál es tu perfil principal?</legend>
-            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
-              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="salud" class="accent-lc-yellow" /> Profesional de la salud mental</label>
-              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="educacion" class="accent-lc-yellow" /> Profesional del ámbito educativo</label>
-              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="familiar" class="accent-lc-yellow" /> Familiar de adolescente/joven con TCA</label>
-              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="estudiante" class="accent-lc-yellow" /> Estudiante avanzado/a</label>
-              <label class="flex items-center gap-2"><input type="radio" name="perfil" value="otro" class="accent-lc-yellow" /> Otro</label>
+          <!-- Progreso -->
+          <div class="flex items-center justify-between text-sm">
+            <div class="text-white/90"><span id="step-label">Paso 1</span> de 5</div>
+            <div class="w-40 h-2 bg-white/20 rounded-full overflow-hidden">
+              <div id="step-progress" class="h-full bg-lc-yellow w-1/5"></div>
             </div>
-          </fieldset>
+          </div>
 
-          <!-- Objetivo principal -->
-          <fieldset>
-            <legend class="font-semibold">¿Cuál es tu principal objetivo al tomar este curso?</legend>
-            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
-              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="actualizar" class="accent-lc-yellow" /> Actualizarme en el abordaje clínico de los TCA</label>
-              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="acompanar" class="accent-lc-yellow" /> Saber cómo acompañar a un familiar</label>
-              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="detectar" class="accent-lc-yellow" /> Detectar señales de alerta en el ámbito educativo</label>
-              <label class="flex items-center gap-2"><input type="radio" name="objetivo" value="conocer" class="accent-lc-yellow" /> Conocer más sobre los TCA de forma general</label>
-            </div>
-          </fieldset>
+          <div class="h-px bg-white/10"></div>
 
-          <!-- Plazo -->
-          <fieldset>
-            <legend class="font-semibold">¿En qué plazo pensás comenzar tu formación?</legend>
-            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
-              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="ahora" class="accent-lc-yellow" /> Inmediatamente</label>
-              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="1mes" class="accent-lc-yellow" /> Dentro de 1 mes</label>
-              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="3meses" class="accent-lc-yellow" /> Dentro de 3 meses o más</label>
-              <label class="flex items-center gap-2"><input type="radio" name="plazo" value="explorando" class="accent-lc-yellow" /> Solo estoy explorando opciones</label>
+          <!-- Paso 1: Perfil principal -->
+          <div class="insc-step" data-step="perfil">
+            <h3 class="font-semibold">¿Cuál es tu perfil principal?</h3>
+            <input type="hidden" name="perfil" />
+            <div class="mt-4 grid gap-3">
+              <div class="insc-option" data-value="salud">Profesional de la salud mental</div>
+              <div class="insc-option" data-value="educacion">Profesional del ámbito educativo</div>
+              <div class="insc-option" data-value="familiar">Familiar de adolescente/joven con TCA</div>
+              <div class="insc-option" data-value="estudiante">Estudiante avanzado/a</div>
+              <div class="insc-option" data-value="otro">Otro</div>
             </div>
-          </fieldset>
+          </div>
 
-          <!-- Certificación -->
-          <fieldset>
-            <legend class="font-semibold">¿Qué importancia tiene para vos obtener certificación oficial?</legend>
-            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
-              <label class="flex items-center gap-2"><input type="radio" name="cert" value="muy" class="accent-lc-yellow" /> Muy importante</label>
-              <label class="flex items-center gap-2"><input type="radio" name="cert" value="algo" class="accent-lc-yellow" /> Algo importante</label>
-              <label class="flex items-center gap-2"><input type="radio" name="cert" value="no" class="accent-lc-yellow" /> No es importante</label>
+          <!-- Paso 2: Objetivo principal -->
+          <div class="insc-step hidden" data-step="objetivo">
+            <h3 class="font-semibold">¿Cuál es tu principal objetivo al tomar este curso?</h3>
+            <input type="hidden" name="objetivo" />
+            <div class="mt-4 grid gap-3">
+              <div class="insc-option" data-value="actualizar">Actualizarme en el abordaje clínico de los TCA</div>
+              <div class="insc-option" data-value="acompanar">Saber cómo acompañar a un familiar</div>
+              <div class="insc-option" data-value="detectar">Detectar señales de alerta en el ámbito educativo</div>
+              <div class="insc-option" data-value="conocer">Conocer más sobre los TCA de forma general</div>
             </div>
-          </fieldset>
+          </div>
 
-          <!-- Pago preferido -->
-          <fieldset>
-            <legend class="font-semibold">¿Cómo preferís realizar el pago?</legend>
-            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
-              <label class="flex items-center gap-2"><input type="radio" name="pago" value="transferencia" class="accent-lc-yellow" /> Transferencia única</label>
-              <label class="flex items-center gap-2"><input type="radio" name="pago" value="cuotas" class="accent-lc-yellow" /> En cuotas</label>
-              <label class="flex items-center gap-2"><input type="radio" name="pago" value="no-seguro" class="accent-lc-yellow" /> No estoy seguro/a</label>
+          <!-- Paso 3: Plazo -->
+          <div class="insc-step hidden" data-step="plazo">
+            <h3 class="font-semibold">¿En qué plazo pensás comenzar tu formación?</h3>
+            <input type="hidden" name="plazo" />
+            <div class="mt-4 grid gap-3">
+              <div class="insc-option" data-value="ahora">Inmediatamente</div>
+              <div class="insc-option" data-value="1mes">Dentro de 1 mes</div>
+              <div class="insc-option" data-value="3meses">Dentro de 3 meses o más</div>
+              <div class="insc-option" data-value="explorando">Solo estoy explorando opciones</div>
             </div>
-          </fieldset>
+          </div>
+
+          <!-- Paso 4: Certificación -->
+          <div class="insc-step hidden" data-step="cert">
+            <h3 class="font-semibold">¿Qué importancia tiene para vos obtener certificación oficial?</h3>
+            <input type="hidden" name="cert" />
+            <div class="mt-4 grid gap-3">
+              <div class="insc-option" data-value="muy">Muy importante</div>
+              <div class="insc-option" data-value="algo">Algo importante</div>
+              <div class="insc-option" data-value="no">No es importante</div>
+            </div>
+          </div>
+
+          <!-- Paso 5: Pago preferido -->
+          <div class="insc-step hidden" data-step="pago">
+            <h3 class="font-semibold">¿Cómo preferís realizar el pago?</h3>
+            <input type="hidden" name="pago" />
+            <div class="mt-4 grid gap-3">
+              <div class="insc-option" data-value="transferencia">Transferencia única</div>
+              <div class="insc-option" data-value="cuotas">En cuotas</div>
+              <div class="insc-option" data-value="no-seguro">No estoy seguro/a</div>
+            </div>
+          </div>
 
           <div id="form-alert" class="hidden rounded-md border border-emerald-300 bg-emerald-50 text-emerald-900 px-4 py-3 text-sm"></div>
 
-          <button type="submit" class="self-start bg-lc-yellow text-slate-900 font-semibold px-6 py-3 rounded-md shadow-soft hover:opacity-90">Enviar mi solicitud</button>
+          <!-- Navegación -->
+          <div class="mt-2 flex items-center gap-3">
+            <button type="button" id="btn-prev" class="px-4 py-2 rounded border border-white/30 text-white/90 hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed">Anterior</button>
+            <button type="button" id="btn-next" class="px-4 py-2 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed">Siguiente</button>
+            <button type="submit" id="btn-submit" class="hidden px-5 py-2.5 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90">Enviar mi solicitud</button>
+          </div>
         </form>
       </div>
     </section>
@@ -407,34 +427,143 @@
       // Año dinámico en el footer
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // Manejo de envío del formulario
-      const form = document.getElementById('form-inscripcion');
-      const alertBox = document.getElementById('form-alert');
+      // Multi-paso con opciones tipo "barra"
+      (function initFormFlow() {
+        const form = document.getElementById('form-inscripcion');
+        if (!form) return;
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+        const alertBox = document.getElementById('form-alert');
+        const steps = Array.from(form.querySelectorAll('.insc-step'));
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnSubmit = document.getElementById('btn-submit');
+        const stepProgress = document.getElementById('step-progress');
+        const stepLabel = document.getElementById('step-label');
 
-        const data = new FormData(form);
-        const payload = Object.fromEntries(data.entries());
+        let currentIndex = 0;
 
-        // Validaciones mínimas (perfil y objetivo)
-        if (!payload.perfil || !payload.objetivo) {
-          alertBox.textContent = 'Por favor, seleccioná al menos tu perfil y tu objetivo principal.';
-          alertBox.classList.remove('hidden');
-          alertBox.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
-          alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
-          return;
+        // Estilos base tipo barra para las opciones (con Tailwind)
+        function applyBaseOptionStyles(optionEl) {
+          optionEl.classList.add(
+            'cursor-pointer', 'rounded-xl', 'border', 'border-white/0', 'bg-white/10', 'backdrop-blur',
+            'px-4', 'py-3', 'text-white/90', 'transition', 'shadow-sm', 'hover:bg-white/20'
+          );
+        }
+        function applySelectedStyles(optionEl) {
+          optionEl.classList.remove('bg-white/10', 'text-white/90');
+          optionEl.classList.add('bg-lc-yellow', 'text-slate-900', 'font-semibold', 'shadow-soft');
+        }
+        function removeSelectedStyles(optionEl) {
+          optionEl.classList.add('bg-white/10', 'text-white/90');
+          optionEl.classList.remove('bg-lc-yellow', 'text-slate-900', 'font-semibold', 'shadow-soft');
         }
 
-        // Simular envío (integración futura con backend/API)
-        console.log('[Inscripción] Datos enviados:', payload);
-        alertBox.textContent = '¡Gracias! Recibimos tu solicitud. Te contactaremos a la brevedad.';
-        alertBox.classList.remove('hidden');
-        alertBox.classList.remove('border-red-300', 'bg-red-50', 'text-red-900');
-        alertBox.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
+        // Inicializar opciones con estilos y listeners
+        const allOptions = Array.from(form.querySelectorAll('.insc-option'));
+        allOptions.forEach(opt => {
+          applyBaseOptionStyles(opt);
+          opt.addEventListener('click', () => {
+            const stepEl = opt.closest('.insc-step');
+            if (!stepEl) return;
+            const hidden = stepEl.querySelector('input[type="hidden"]');
+            // Limpiar selección previa
+            stepEl.querySelectorAll('.insc-option').forEach(o => { o.classList.remove('selected'); removeSelectedStyles(o); });
+            // Seleccionar actual
+            opt.classList.add('selected');
+            applySelectedStyles(opt);
+            if (hidden) hidden.value = opt.dataset.value || '';
+            // Habilitar siguiente
+            btnNext.disabled = false;
+          });
+        });
 
-        form.reset();
-      });
+        function updateUI() {
+          steps.forEach((el, idx) => {
+            if (idx === currentIndex) {
+              el.classList.remove('hidden');
+            } else {
+              el.classList.add('hidden');
+            }
+          });
+
+          const total = steps.length;
+          stepLabel.textContent = `Paso ${currentIndex + 1}`;
+          const pct = Math.max(1, Math.round(((currentIndex + 1) / total) * 100));
+          stepProgress.style.width = pct + '%';
+
+          btnPrev.disabled = currentIndex === 0;
+
+          const onLast = currentIndex === total - 1;
+          btnNext.classList.toggle('hidden', onLast);
+          btnSubmit.classList.toggle('hidden', !onLast);
+
+          // Estado del botón Next según selección
+          const stepEl = steps[currentIndex];
+          const hidden = stepEl.querySelector('input[type="hidden"]');
+          btnNext.disabled = !(hidden && hidden.value);
+        }
+
+        btnPrev.addEventListener('click', () => {
+          if (currentIndex > 0) {
+            currentIndex -= 1;
+            updateUI();
+            alertBox.classList.add('hidden');
+          }
+        });
+
+        btnNext.addEventListener('click', () => {
+          const stepEl = steps[currentIndex];
+          const hidden = stepEl.querySelector('input[type="hidden"]');
+          if (!hidden || !hidden.value) {
+            alertBox.textContent = 'Seleccioná una opción para continuar.';
+            alertBox.classList.remove('hidden');
+            alertBox.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
+            alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
+            return;
+          }
+          if (currentIndex < steps.length - 1) {
+            currentIndex += 1;
+            updateUI();
+            alertBox.classList.add('hidden');
+          }
+        });
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const data = new FormData(form);
+          const payload = Object.fromEntries(data.entries());
+
+          // Validaciones mínimas (perfil y objetivo)
+          if (!payload.perfil || !payload.objetivo) {
+            alertBox.textContent = 'Por favor, completá tu perfil y objetivo.';
+            alertBox.classList.remove('hidden');
+            alertBox.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
+            alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
+            return;
+          }
+
+          // Simular envío (integración futura con backend/API, ver regla de API/Services)
+          console.log('[Inscripción] Datos enviados:', payload);
+          alertBox.textContent = '¡Gracias! Recibimos tu solicitud. Te contactaremos a la brevedad.';
+          alertBox.classList.remove('hidden');
+          alertBox.classList.remove('border-red-300', 'bg-red-50', 'text-red-900');
+          alertBox.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
+
+          // Reset visual de selección y volver al primer paso
+          steps.forEach(stepEl => {
+            const hidden = stepEl.querySelector('input[type="hidden"]');
+            if (hidden) hidden.value = '';
+            stepEl.querySelectorAll('.insc-option').forEach(o => { o.classList.remove('selected'); removeSelectedStyles(o); });
+          });
+          form.reset();
+          currentIndex = 0;
+          updateUI();
+          try { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (_) {}
+        });
+
+        // Primera renderización
+        updateUI();
+      })();
     </script>
   </body>
   
