@@ -541,24 +541,10 @@
             alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
             return;
           }
-
-          // Simular envío (integración futura con backend/API, ver regla de API/Services)
+          
+          // Envío futuro a backend/API (según reglas) y redirección a Wisboo
           console.log('[Inscripción] Datos enviados:', payload);
-          alertBox.textContent = '¡Gracias! Recibimos tu solicitud. Te contactaremos a la brevedad.';
-          alertBox.classList.remove('hidden');
-          alertBox.classList.remove('border-red-300', 'bg-red-50', 'text-red-900');
-          alertBox.classList.add('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
-
-          // Reset visual de selección y volver al primer paso
-          steps.forEach(stepEl => {
-            const hidden = stepEl.querySelector('input[type="hidden"]');
-            if (hidden) hidden.value = '';
-            stepEl.querySelectorAll('.insc-option').forEach(o => { o.classList.remove('selected'); removeSelectedStyles(o); });
-          });
-          form.reset();
-          currentIndex = 0;
-          updateUI();
-          try { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (_) {}
+          window.location.href = 'https://lacasitavirtual.wisboo.com/product/abordaje-de-los-tca-en-adolescentes-y-jovenes';
         });
 
         // Primera renderización
