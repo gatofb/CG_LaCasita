@@ -387,9 +387,14 @@
             </div>
           </div>
         </div>
-        <div class="mt-6 flex items-center justify-center gap-2 bg-lc-gray rounded-lg px-4 py-3 ring-1 ring-slate-200">
-          <i data-feather="users" class="w-5 h-5 text-lc-teal"></i>
-          <p class="m-0 text-slate-800"><span class="font-semibold">Y un equipo completo de <span class="text-lc-tealDark">más de 40 profesionales</span> especializados.</span></p>
+        <div class="mt-8 rounded-xl border border-yellow-200 bg-amber-50 p-6 sm:p-7 shadow-soft text-center">
+          <div class="inline-flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-lc-yellow text-slate-900 ring-1 ring-yellow-300/60">
+              <i data-feather="users" class="w-5 h-5"></i>
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-lc-tealDark m-0">Más de 40 profesionales especializados</h3>
+          </div>
+          <p class="mt-3 text-slate-800 text-base sm:text-lg">Y un equipo completo que integra <strong>psicología</strong>, <strong>psiquiatría</strong>, <strong>nutrición</strong> y <strong>medicina</strong> para acompañarte.</p>
         </div>
       </div>
     </section>
@@ -648,8 +653,42 @@
             if (hidden) hidden.value = opt.dataset.value || '';
             // Habilitar siguiente
             btnNext.disabled = false;
+
+            // Auto-avance: si el paso actual es de selección (tiene hidden) y NO es el último
+            const isSelectionStep = !!hidden;
+            const isLast = currentIndex === steps.length - 1;
+            if (isSelectionStep && !isLast) {
+              // Feedback visual en el botón siguiente
+              btnNext.classList.add('ring-2','ring-lc-yellow/70','shadow-lg','scale-[1.02]','transition','duration-300');
+              setTimeout(() => {
+                btnNext.classList.remove('ring-2','ring-lc-yellow/70','shadow-lg','scale-[1.02]');
+                goTo(currentIndex + 1);
+              }, 800);
+            }
           });
         });
+
+        function goTo(nextIndex) {
+          if (nextIndex < 0 || nextIndex >= steps.length) return;
+          const fromEl = steps[currentIndex];
+          const toEl = steps[nextIndex];
+          if (fromEl === toEl) return;
+
+          // Transición suave entre pasos
+          fromEl.classList.add('transition','duration-300','ease-out');
+          fromEl.classList.add('opacity-0','translate-y-1');
+          setTimeout(() => {
+            fromEl.classList.add('hidden');
+            fromEl.classList.remove('opacity-0','translate-y-1');
+            toEl.classList.remove('hidden');
+            toEl.classList.add('transition','duration-300','ease-out','opacity-0','-translate-y-1');
+            requestAnimationFrame(() => {
+              toEl.classList.remove('opacity-0','-translate-y-1');
+            });
+            currentIndex = nextIndex;
+            updateUI();
+          }, 280);
+        }
 
         function updateUI() {
           steps.forEach((el, idx) => {
@@ -686,8 +725,7 @@
 
         btnPrev.addEventListener('click', () => {
           if (currentIndex > 0) {
-            currentIndex -= 1;
-            updateUI();
+            goTo(currentIndex - 1);
             alertBox.classList.add('hidden');
           }
         });
@@ -710,8 +748,7 @@
             return;
           }
           if (currentIndex < steps.length - 1) {
-            currentIndex += 1;
-            updateUI();
+            goTo(currentIndex + 1);
             alertBox.classList.add('hidden');
           }
         });
