@@ -69,18 +69,25 @@
 
     <!-- Hero -->
     <section class="relative bg-gradient-to-b from-lc-tealDark to-lc-teal text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div class="grid md:grid-cols-2 items-center gap-10">
           <div class="max-w-3xl">
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">Formación integral en Trastornos de la Conducta Alimentaria (TCA)</h1>
-            <p class="mt-5 text-lg sm:text-xl text-white/90">Aprendé un abordaje clínico, educativo y familiar integral para adolescentes y jóvenes con Trastornos de la Conducta Alimentaria (TCA), de la mano de referentes en el área.</p>
+            <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide bg-white/10 border border-white/20 text-white/80 rounded-full px-3 py-1">
+              <i data-feather="award" class="w-3.5 h-3.5"></i>
+              Formación integral en Trastornos de la Conducta Alimentaria (TCA)
+            </div>
+            <h1 class="mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold leading-tight">Sumate a una red de especialistas en TCA</h1>
+            <p class="mt-3 text-base sm:text-lg text-white/90">Aprendé un abordaje clínico, educativo y familiar integral para adolescentes y jóvenes con TCA, de la mano de referentes en el área.</p>
 
-            <div class="mt-8 bg-white/10 backdrop-blur rounded-lg p-5 sm:p-6 shadow-soft">
+            <div class="mt-6 bg-white/10 backdrop-blur rounded-lg p-5 sm:p-6 shadow-soft">
               <div class="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-6">
-                <ul class="flex-1 grid gap-3 text-sm text-white">
+                <ul class="flex-1 grid sm:grid-cols-2 gap-3 text-sm text-white">
                   <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>100% online y asincrónico</span></li>
                   <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Certificado oficial</span></li>
                   <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Acceso inmediato</span></li>
+                  <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Actualización DSM‑5</span></li>
+                  <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Prevención de recaídas</span></li>
+                  <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Casos guiados</span></li>
                 </ul>
                 <div class="shrink-0">
                   <a href="#inscripcion" class="inline-flex items-center gap-2 bg-lc-yellow text-slate-900 font-semibold px-6 py-3 rounded-md shadow-soft hover:opacity-90">
@@ -92,7 +99,11 @@
             </div>
           </div>
           <div>
-            <div class="relative w-full rounded-lg shadow-soft overflow-hidden bg-black/20">
+            <div class="relative w-full rounded-lg shadow-soft overflow-hidden bg-black/20 ring-2 ring-lc-yellow/60">
+              <div class="absolute top-3 left-3 z-10 inline-flex items-center gap-2 bg-lc-yellow text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full shadow">
+                <i data-feather="play-circle" class="w-4 h-4"></i>
+                Mirá la presentación
+              </div>
               <div class="relative pt-[56.25%]">
                 <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/fPmVVOdtTJI?rel=0" title="Presentación del curso - La Casita Virtual" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
@@ -445,7 +456,10 @@
       // Año dinámico en el footer
       document.getElementById('year').textContent = new Date().getFullYear();
       // Reemplazar iconos Feather
-      try { if (window.feather && typeof window.feather.replace === 'function') { window.feather.replace(); } } catch(_) {}
+      function replaceFeather() {
+        try { if (window.feather && typeof window.feather.replace === 'function') { window.feather.replace(); } } catch(_) {}
+      }
+      replaceFeather();
 
       // Multi-paso con opciones tipo "barra"
       (function initFormFlow() {
@@ -569,6 +583,8 @@
 
         // Primera renderización
         updateUI();
+        // Reemplazar íconos después de renderizar UI del form
+        replaceFeather();
       })();
     </script>
   </body>
