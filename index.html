@@ -568,7 +568,6 @@
           <!-- Navegación -->
           <div class="mt-2 flex items-center gap-3">
             <button type="button" id="btn-prev" class="px-4 py-2 rounded border border-white/30 text-white/90 hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed">Anterior</button>
-            <button type="button" id="btn-next" class="hidden px-4 py-2 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed">Siguiente</button>
             <button type="submit" id="btn-submit" class="hidden px-5 py-2.5 rounded bg-lc-yellow text-slate-900 font-semibold shadow-soft hover:opacity-90">Enviar mi solicitud</button>
           </div>
         </form>
@@ -669,15 +668,9 @@
             const isSelectionStep = !!hidden;
             const isLast = currentIndex === steps.length - 1;
             if (isSelectionStep && !isLast) {
-              // Feedback visual: barra de progreso "amarilla" y botón Anterior en amarillo durante la transición
-              const prevBgClasses = ['bg-lc-yellow','text-slate-900'];
-              const revertPrev = () => prevBgClasses.forEach(c=>btnPrev.classList.remove(c));
-              btnPrev.classList.add('bg-lc-yellow','text-slate-900');
-              stepProgress.classList.add('bg-lc-yellow');
+              // La opción ya queda amarilla (applySelectedStyles). Esperamos 800ms y avanzamos.
               setTimeout(() => {
                 goTo(currentIndex + 1);
-                revertPrev();
-                stepProgress.classList.remove('bg-lc-yellow');
               }, 800);
             }
           });
@@ -763,13 +756,6 @@
             return;
           }
           if (currentIndex < steps.length - 1) {
-            // feedback al usar el botón atrás como CTA visual temporal
-            btnPrev.classList.add('bg-lc-yellow','text-slate-900');
-            stepProgress.classList.add('bg-lc-yellow');
-            setTimeout(()=>{
-              btnPrev.classList.remove('bg-lc-yellow','text-slate-900');
-              stepProgress.classList.remove('bg-lc-yellow');
-            }, 800);
             goTo(currentIndex + 1);
             alertBox.classList.add('hidden');
           }
