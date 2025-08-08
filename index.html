@@ -478,7 +478,7 @@
         <form id="form-inscripcion" class="mt-8 grid gap-6 bg-white/10 p-6 rounded-lg">
           <!-- Progreso -->
           <div class="flex items-center justify-between text-sm">
-            <div class="text-white/90"><span id="step-label">Paso 1</span> de 5</div>
+            <div class="text-white/90">Paso <span id="step-current">1</span> de <span id="step-total">5</span></div>
             <div class="w-40 h-2 bg-white/20 rounded-full overflow-hidden">
               <div id="step-progress" class="h-full bg-lc-yellow w-1/5"></div>
             </div>
@@ -545,6 +545,16 @@
             </div>
           </div>
 
+          <!-- Paso 6: WhatsApp -->
+          <div class="insc-step hidden" data-step="whatsapp">
+            <h3 class="font-semibold">Dejanos tu WhatsApp para enviarte la info y un presupuesto</h3>
+            <div class="mt-4 grid gap-2">
+              <label for="whatsapp" class="text-sm text-white/90">Número (formato internacional, por ejemplo: +54911XXXXXXXX)</label>
+              <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="+54911XXXXYYYY" class="px-3 py-2 rounded bg-white/90 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-lc-yellow" />
+              <p class="text-xs text-white/80">Solo lo usaremos para enviarte información del curso.</p>
+            </div>
+          </div>
+
           <div id="form-alert" class="hidden rounded-md border border-emerald-300 bg-emerald-50 text-emerald-900 px-4 py-3 text-sm"></div>
 
           <!-- Navegación -->
@@ -595,9 +605,12 @@
         const btnNext = document.getElementById('btn-next');
         const btnSubmit = document.getElementById('btn-submit');
         const stepProgress = document.getElementById('step-progress');
-        const stepLabel = document.getElementById('step-label');
+        const stepCurrent = document.getElementById('step-current');
+        const stepTotalEl = document.getElementById('step-total');
 
         let currentIndex = 0;
+        const totalSteps = steps.length;
+        if (stepTotalEl) stepTotalEl.textContent = String(totalSteps);
 
         // Estilos base tipo barra para las opciones (con Tailwind)
         function applyBaseOptionStyles(optionEl) {
@@ -644,7 +657,7 @@
           });
 
           const total = steps.length;
-          stepLabel.textContent = `Paso ${currentIndex + 1}`;
+          if (stepCurrent) stepCurrent.textContent = String(currentIndex + 1);
           const pct = Math.max(1, Math.round(((currentIndex + 1) / total) * 100));
           stepProgress.style.width = pct + '%';
 
@@ -654,10 +667,17 @@
           btnNext.classList.toggle('hidden', onLast);
           btnSubmit.classList.toggle('hidden', !onLast);
 
-          // Estado del botón Next según selección
+          // Estado del botón Next según selección/entrada
           const stepEl = steps[currentIndex];
           const hidden = stepEl.querySelector('input[type="hidden"]');
-          btnNext.disabled = !(hidden && hidden.value);
+          const waInput = stepEl.querySelector('input[name="whatsapp"]');
+          let valid = false;
+          if (hidden && hidden.value) valid = true;
+          else if (waInput) {
+            const val = (waInput.value || '').trim();
+            valid = /^\+?[0-9]{8,15}$/.test(val);
+          }
+          btnNext.disabled = !valid;
         }
 
         btnPrev.addEventListener('click', () => {
@@ -671,8 +691,15 @@
         btnNext.addEventListener('click', () => {
           const stepEl = steps[currentIndex];
           const hidden = stepEl.querySelector('input[type="hidden"]');
-          if (!hidden || !hidden.value) {
-            alertBox.textContent = 'Seleccioná una opción para continuar.';
+          const waInput = stepEl.querySelector('input[name="whatsapp"]');
+          let valid = false;
+          if (hidden && hidden.value) valid = true;
+          if (waInput) {
+            const val = (waInput.value || '').trim();
+            valid = /^\+?[0-9]{8,15}$/.test(val);
+          }
+          if (!valid) {
+            alertBox.textContent = waInput ? 'Ingresá un WhatsApp válido (ej: +54911XXXXYYYY).' : 'Seleccioná una opción para continuar.';
             alertBox.classList.remove('hidden');
             alertBox.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
             alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
@@ -690,9 +717,9 @@
           const data = new FormData(form);
           const payload = Object.fromEntries(data.entries());
 
-          // Validaciones mínimas (perfil y objetivo)
-          if (!payload.perfil || !payload.objetivo) {
-            alertBox.textContent = 'Por favor, completá tu perfil y objetivo.';
+          // Validaciones mínimas (perfil, objetivo y whatsapp)
+          if (!payload.perfil || !payload.objetivo || !(payload.whatsapp && /^\+?[0-9]{8,15}$/.test(payload.whatsapp.trim()))) {
+            alertBox.textContent = 'Por favor, completá tu perfil, objetivo y un WhatsApp válido.';
             alertBox.classList.remove('hidden');
             alertBox.classList.remove('border-emerald-300', 'bg-emerald-50', 'text-emerald-900');
             alertBox.classList.add('border-red-300', 'bg-red-50', 'text-red-900');
