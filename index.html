@@ -14,6 +14,8 @@
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -45,20 +47,23 @@
   </head>
   <body class="font-sans text-slate-800 bg-white">
     <!-- Header simple -->
-    <header class="bg-lc-tealDark text-white">
+    <header class="bg-white/95 backdrop-blur text-slate-800 sticky top-0 z-50 border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         <a href="#" class="flex items-center gap-3" aria-label="La Casita Virtual">
           <img src="https://lacasitavirtual.org.ar/wp-content/uploads/2019/07/cropped-logo-ok-1.png" alt="La Casita Virtual" class="h-10 w-auto" />
           <span class="sr-only">La Casita Virtual</span>
         </a>
-        <nav class="hidden md:flex items-center gap-6 text-white/90 text-sm">
-          <a href="#problema" class="hover:text-white">Por qué formarte</a>
-          <a href="#resumen" class="hover:text-white">El curso</a>
-          <a href="#contenido" class="hover:text-white">Contenido</a>
-          <a href="#equipo" class="hover:text-white">Equipo</a>
-          <a href="#faq" class="hover:text-white">FAQ</a>
+        <nav class="hidden md:flex items-center gap-6 text-slate-600 text-sm">
+          <a href="#problema" class="hover:text-lc-teal">Por qué formarte</a>
+          <a href="#resumen" class="hover:text-lc-teal">El curso</a>
+          <a href="#contenido" class="hover:text-lc-teal">Contenido</a>
+          <a href="#equipo" class="hover:text-lc-teal">Equipo</a>
+          <a href="#faq" class="hover:text-lc-teal">FAQ</a>
         </nav>
-        <a href="#inscripcion" class="inline-block bg-lc-yellow text-slate-900 font-semibold px-4 py-2 rounded hover:opacity-95 shadow-soft">Quiero inscribirme</a>
+        <a href="#inscripcion" class="inline-flex items-center gap-2 bg-lc-teal text-white font-semibold px-4 py-2 rounded hover:opacity-95 shadow-soft">
+          <i data-feather="edit-3" class="w-4 h-4"></i>
+          Quiero inscribirme
+        </a>
       </div>
     </header>
 
@@ -70,15 +75,20 @@
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">Formación integral en Trastornos de la Conducta Alimentaria (TCA)</h1>
             <p class="mt-5 text-lg sm:text-xl text-white/90">Aprendé un abordaje clínico, educativo y familiar integral para adolescentes y jóvenes con Trastornos de la Conducta Alimentaria (TCA), de la mano de referentes en el área.</p>
 
-            <ul class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-              <li class="flex items-center gap-2 bg-white/10 backdrop-blur rounded px-3 py-2"><span>✅</span><span>100% online y asincrónico</span></li>
-              <li class="flex items-center gap-2 bg-white/10 backdrop-blur rounded px-3 py-2"><span>✅</span><span>Certificado oficial</span></li>
-              <li class="flex items-center gap-2 bg-white/10 backdrop-blur rounded px-3 py-2"><span>✅</span><span>Acceso inmediato</span></li>
-            </ul>
-
-            <div class="mt-10 flex items-center gap-4">
-              <a href="#inscripcion" class="bg-lc-yellow text-slate-900 font-semibold px-6 py-3 rounded-md shadow-soft hover:opacity-90">Quiero inscribirme ahora</a>
-              <a href="#contenido" class="text-white/90 hover:text-white">Ver contenido</a>
+            <div class="mt-8 bg-white/10 backdrop-blur rounded-lg p-5 sm:p-6 shadow-soft">
+              <div class="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-6">
+                <ul class="flex-1 grid gap-3 text-sm text-white">
+                  <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>100% online y asincrónico</span></li>
+                  <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Certificado oficial</span></li>
+                  <li class="flex items-center gap-3"><i data-feather="check-circle" class="w-5 h-5 text-emerald-400"></i><span>Acceso inmediato</span></li>
+                </ul>
+                <div class="shrink-0">
+                  <a href="#inscripcion" class="inline-flex items-center gap-2 bg-lc-yellow text-slate-900 font-semibold px-6 py-3 rounded-md shadow-soft hover:opacity-90">
+                    <i data-feather="arrow-right" class="w-4 h-4"></i>
+                    Quiero inscribirme ahora
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <div>
@@ -91,6 +101,14 @@
         </div>
       </div>
     </section>
+
+    <!-- Botón flotante CTA -->
+    <div class="fixed bottom-6 right-6 z-40">
+      <a href="#inscripcion" class="inline-flex items-center gap-2 bg-lc-teal text-white px-4 py-2 rounded-full shadow-soft hover:opacity-95 text-sm" aria-label="Inscribirme">
+        <i data-feather="mouse-pointer" class="w-4 h-4"></i>
+        Inscribirme
+      </a>
+    </div>
 
     <!-- Problema / Conexión -->
     <section id="problema" class="bg-lc-gray">
@@ -426,6 +444,8 @@
     <script>
       // Año dinámico en el footer
       document.getElementById('year').textContent = new Date().getFullYear();
+      // Reemplazar iconos Feather
+      try { if (window.feather && typeof window.feather.replace === 'function') { window.feather.replace(); } } catch(_) {}
 
       // Multi-paso con opciones tipo "barra"
       (function initFormFlow() {
